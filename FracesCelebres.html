@@ -6,6 +6,26 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <fieldset style="width:390px;">
+        <Legend><h1>Fases célebres de usuario</h1></Legend>    
+        <form id="userPhasesForm">
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" name="username" required><br>
+        
+            <label for="mainPhrase">Frase principal:</label><br>
+            <textarea id="mainPhrase" name="mainPhrase" rows="4" cols="50" required></textarea><br>
+
+            <label for="secondaryPhrase">Frase secundaria:</label><br>
+            <textarea id="secondaryPhrase" name="secondaryPhrase" rows="4" cols="50" required></textarea><br>            
+    </form>       
+    </fieldset>
+    <button type="button" onclick="document.location='Inicio.html'">Volver al Menú</button>
+    <button type="button" onclick="enviarEmail()">Enviar Email</button>
+    <script>
+        function enviarEmail() {
+            // Código para enviar un correo electrónico
+            alert("El correo electrónico ha sido enviado.");
+        }
+    </script> 
 </body>
 </html>
