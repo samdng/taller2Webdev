@@ -44,7 +44,15 @@
             </div>
             <div class="form-group">
                 <label class="label" for="id_pais">ID de País:</label>
-                <input class="input" type="number" id="id_pais" name="id_pais" required>
+                <div class="select">
+                    <select id="id_pais" name="id_pais" class="input" required>
+                        <option value="" disabled selected>Seleccione un país</option>
+                        <option value="1">País 1</option>
+                        <option value="2">País 2</option>
+                        <option value="3">País 3</option>
+                        <!-- Agrega más opciones según sea necesario -->
+                    </select>
+                </div>
             </div>
             <div class="form-group">
                 <label class="label" for="nombre">Nombre:</label>
