@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuarios</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registro de carro</h2>
+        <form action="#" method="POST">
+            <div>
+                <label for="id_car">ID del coche</label>
+                <input type="number" id="id_car" name="id_car" class="form-control" max="11" required>
+            </div>
+            <div>
+                <label for="id_pais">ID de pais</label>
+                <select id="id_pais" name="id_pais" class="form-control" required>
+                    <option value="" disabled selected>Seleccione un país</option>
+                    <option value="1">Colombia</option>
+                    <option value="2">Venezuela</option>
+                    <option value="3">Ecuador</option>
+                </select>
+            </div>
+            <div>
+                <label for="id_movidoa">ID de combustible</label>
+                <select id="id_movidoa" name="id_movidoa" class="form-control" required>
+                    <option value="" disabled selected>Seleccione tipo de combustible</option>
+                    <option value="1">Gasolina</option>
+                    <option value="2">Diesel</option>
+                    <option value="3">Gas</option>
+                </select>
+            </div>
+            <div>
+                <label for="id_tipocoche">ID tipo de coche</label>
+                <select id="id_tipocoche" name="id_tipocoche" class="form-control" required>
+                    <option value="" disabled selected>Seleccione el tipo de coche</option>
+                    <option value="1">Coche 1</option>
+                    <option value="2">Coche 2</option>
+                    <option value="3">Coche 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="id_estado">ID de estado</label>
+                <select id="id_estado" name="id_estado" class="form-control" required>
+                    <option value="" disabled selected>Seleccione el estado del coche</option>
+                    <option value="1">Nuevo</option>
+                    <option value="2">Usado</option>
+                </select>
+            </div>
+            <div>
+                <label for="id_marca">ID de marca</label>
+                <select id="id_marca" name="id_marca" class="form-control" required>
+                    <option value="" disabled selected>Seleccione la marca del coche</option>
+                    <option value="1">Kia</option>
+                    <option value="2">Chevrolet</option>
+                    <option value="2">Ferrari</option>
+                </select>
+            </div>
+            <div>
+                <label for="id_user">ID de usuario</label>
+                <select id="id_user" name="id_user" class="form-control" required>
+                    <option value="" disabled selected>Seleccione el id del usuario</option>
+                    <option value="1">ID 1</option>
+                    <option value="2">ID 2</option>
+                    <option value="2">ID 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="modelo">Modelo del coche</label>
+                <input type="text" name="modelo" id="modelo" class="form-control" max="10" required>
+            </div>
+            <div>
+                <label for="año">Año</label>
+                <input type="number" name="año" id="año" class="form-control"  min="4" max="4" required>
+            </div>
+            <div>
+                <label for="detalle">Detalle</label>
+                <input type="text" name="detalle" id="detalle" class="form-control" required>
+            </div>
+            <div>
+                <label for="caja">Caja</label>
+                <input type="number" name="caja" id="caja" class="form-control" required>
+            </div>
+            <div>
+                <label for="motor">Motor</label>
+                <input type="number" name="motor" id="motor" class="form-control" required>
+            </div>
+            <div>
+                <label for="fechapub">Fecha de publicación</label>
+                <input type="date" name="fechapub" id="fechapub" class="form-control" required>
+            </div>
+            <div>
+                <label for="precio">Precio</label>
+                <input type="number" name="precio" id="precio" class="form-control" min="7" max="9" required>
+            </div>
+            <div>
+                <label for="moneda">Moneda</label>
+                <input type="text" name="moneda" id="moneda" class="form-control" required>
+            </div>
+            <div>
+                <label for="cc_pic01">Descripción 1</label>
+                <input type="text" name="cc_pic01" id="cc_pic01" class="form-control">
+            </div>
+            <div>
+                <label for="cc_pic02">Descripción 2</label>
+                <input type="text" name="cc_pic02" id="cc_pic02" class="form-control">
+            </div>
+            <div>
+                <label for="cc_pic03">Descripción 3</label>
+                <input type="text" name="cc_pic03" id="cc_pic03" class="form-control" >
+            </div>
+            <div>
+                <label for="cc_destac">Destacado</label>
+                <input type="text" name="cc_destac" id="cc_destac" class="form-control" max="2" required>
+            </div>
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
