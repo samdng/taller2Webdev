@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
       gustos.forEach(function(gusto, index) {
         var fila = document.createElement('tr');
         fila.innerHTML = `
-          <td>${gusto.nombre}</td>
-          <td>${gusto.porcentaje}</td>
-          <td><a href="#" class="editar-gusto" data-index="${index}">Editar</a></td>
+          <td><span class="gusto" data-index="${index}">${gusto.nombre}</span><input type="text" class="gusto-input" data-index="${index}" style="display: none;"></td>
+          <td><span class="porcentaje" data-index="${index}">${gusto.porcentaje}</span><input type="text" class="porcentaje-input" data-index="${index}" style="display: none;"></td>
+          <td><a href="#" class="editar-gusto" style="color: blue; text-decoration: underline;">Editar</a></td>
         `;
         tbody.appendChild(fila);
       });
@@ -35,20 +35,90 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   
-    // Manejador de evento para editar un gusto
+    // Manejador de evento para editar un gusto directamente en la tabla
     document.getElementById('tabla-gustos').addEventListener('click', function(event) {
       if (event.target.classList.contains('editar-gusto')) {
-        event.preventDefault();
-        var index = event.target.getAttribute('data-index');
-        var nuevoNombre = prompt('Ingrese el nuevo nombre del gusto:', gustos[index].nombre);
-        if (nuevoNombre !== null && nuevoNombre.trim() !== '') {
-          gustos[index].nombre = nuevoNombre.trim();
-          mostrarGustos();
+        var index = event.target.parentNode.parentNode.rowIndex - 1;
+        var gustoSpan = document.querySelector(`.gusto[data-index="${index}"]`);
+        var gustoInput = document.querySelector(`.gusto-input[data-index="${index}"]`);
+        var porcentajeSpan = document.querySelector(`.porcentaje[data-index="${index}"]`);
+        var porcentajeInput = document.querySelector(`.porcentaje-input[data-index="${index}"]`);
+  
+        if (gustoSpan && gustoInput && porcentajeSpan && porcentajeInput) {
+          gustoSpan.style.display = 'none';
+          gustoInput.style.display = 'inline';
+          gustoInput.value = gustoSpan.textContent;
+  
+          porcentajeSpan.style.display = 'none';
+          porcentajeInput.style.display = 'inline';
+          porcentajeInput.value = porcentajeSpan.textContent;
+  
+          var aceptarButton = document.createElement('button');
+          aceptarButton.textContent = 'Aceptar';
+          aceptarButton.classList.add('aceptar-gusto');
+  
+          var cancelarButton = document.createElement('button');
+          cancelarButton.textContent = 'Cancelar';
+          cancelarButton.classList.add('cancelar-gusto');
+  
+          var buttonCell = event.target.parentNode;
+          buttonCell.appendChild(aceptarButton);
+          buttonCell.appendChild(cancelarButton);
+  
+          event.target.style.display = 'none';
+        }
+      } else if (event.target.classList.contains('aceptar-gusto')) {
+        var index = event.target.parentNode.parentNode.rowIndex - 1;
+        var gustoSpan = document.querySelector(`.gusto[data-index="${index}"]`);
+        var gustoInput = document.querySelector(`.gusto-input[data-index="${index}"]`);
+        var porcentajeSpan = document.querySelector(`.porcentaje[data-index="${index}"]`);
+        var porcentajeInput = document.querySelector(`.porcentaje-input[data-index="${index}"]`);
+  
+        if (gustoSpan && gustoInput && porcentajeSpan && porcentajeInput) {
+          gustos[index].nombre = gustoInput.value.trim();
+          gustos[index].porcentaje = porcentajeInput.value.trim();
+  
+          gustoSpan.textContent = gustoInput.value.trim();
+          gustoSpan.style.display = 'inline';
+          gustoInput.style.display = 'none';
+  
+          porcentajeSpan.textContent = porcentajeInput.value.trim();
+          porcentajeSpan.style.display = 'inline';
+          porcentajeInput.style.display = 'none';
+  
+          var buttonCell = event.target.parentNode;
+          buttonCell.querySelector('.editar-gusto').style.display = 'inline';
+          buttonCell.removeChild(event.target);
+          buttonCell.removeChild(buttonCell.querySelector('.cancelar-gusto'));
         }
       }
     });
   
-    // Evitar el envío del formulario por defecto
+    // Manejador de evento para cancelar la edición
+    document.getElementById('tabla-gustos').addEventListener('click', function(event) {
+      if (event.target.classList.contains('cancelar-gusto')) {
+        var index = event.target.parentNode.parentNode.rowIndex - 1;
+        var gustoSpan = document.querySelector(`.gusto[data-index="${index}"]`);
+        var gustoInput = document.querySelector(`.gusto-input[data-index="${index}"]`);
+        var porcentajeSpan = document.querySelector(`.porcentaje[data-index="${index}"]`);
+        var porcentajeInput = document.querySelector(`.porcentaje-input[data-index="${index}"]`);
+  
+        if (gustoSpan && gustoInput && porcentajeSpan && porcentajeInput) {
+          gustoSpan.style.display = 'inline';
+          gustoInput.style.display = 'none';
+  
+          porcentajeSpan.style.display = 'inline';
+          porcentajeInput.style.display = 'none';
+  
+          var buttonCell = event.target.parentNode;
+          buttonCell.querySelector('.editar-gusto').style.display = 'inline';
+          buttonCell.removeChild(event.target.parentNode.lastChild);
+          buttonCell.removeChild(event.target);
+        }
+      }
+    });
+  
+    // Manejador de evento para el envío del formulario
     document.getElementById('contact-form').addEventListener('submit', function(event) {
       event.preventDefault();
   

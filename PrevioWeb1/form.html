@@ -13,38 +13,31 @@
       <p>formulario de afiliacion</p>
     </center>
     <form id="contact-form">
-      <label for="nombre">Nombre completo:</label>
       <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
       
-      <label for="email">Email:</label>
       <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
       
-      <label for="telefono">Teléfono:</label>
       <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
 
-      <!-- Nuevo campo para gustos -->
-      <label for="gusto">Gustos:</label>
       <div id="gusto-container">
         <input type="text" id="gusto" name="gusto" placeholder="Ingrese un gusto">
         <button type="button" id="agregar-gusto">Agregar</button>
       </div>
-      
-      <button type="submit">Enviar</button>
     </form>
-
-    <!-- Tabla para mostrar los gustos -->
-    <table id="tabla-gustos">
-      <thead>
-        <tr>
-          <th>Gustos</th>
-          <th>Porcentaje</th>
-          <th>Editar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Aquí se agregarán las filas de la tabla dinámicamente -->
-      </tbody>
-    </table>
+    <div class="container">
+        <table id="tabla-gustos">
+            <thead>
+            <tr>
+                <th>Gusto</th>
+                <th>%</th>
+                <th>Editar</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+      
   </div>
   <script src="script.js"></script>
 </body>
