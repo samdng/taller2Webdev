@@ -12,8 +12,9 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Asegura que el posicionamiento absoluto sea relativo a este contenedor */
   }
-  
+
   h1 {
     text-align: center;
   }
@@ -46,5 +47,13 @@ body {
   
   button:hover {
     background-color: #0056b3;
+  }
+
+  #form-title {
+    position: absolute;
+    top: -50px; /* Ajusta esta distancia según sea necesario */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Corrige la posición centrada */
+    margin: 0; /* Elimina los márgenes predeterminados */
   }
   
