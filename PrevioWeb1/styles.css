@@ -12,7 +12,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative; /* Asegura que el posicionamiento absoluto sea relativo a este contenedor */
+    position: relative;
   }
 
   h1 {
@@ -38,7 +38,7 @@ body {
   button {
     padding: 10px;
     border: none;
-    background-color: #007bff;
+    background-color: #00b368;
     color: #fff;
     font-size: 16px;
     border-radius: 4px;
@@ -46,14 +46,14 @@ body {
   }
   
   button:hover {
-    background-color: #0056b3;
+    background-color: #00b368;
   }
 
   #form-title {
     position: absolute;
-    top: -50px; /* Ajusta esta distancia según sea necesario */
-    left: 50%; /* Centra horizontalmente */
-    transform: translateX(-50%); /* Corrige la posición centrada */
-    margin: 0; /* Elimina los márgenes predeterminados */
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 32px;
   }
-  

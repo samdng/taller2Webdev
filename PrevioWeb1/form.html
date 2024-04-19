@@ -7,9 +7,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h2 id="form-title"><strong>Web</strong>Developer</h2>
   <div class="container">
-    <p>formulario de afiliacion</p>
+    <p id="form-title"><b>Web</b>Developer</p>
+    <center>
+      <p>formulario de afiliacion</p>
+    </center>
     <form id="contact-form">
       <label for="nombre">Nombre completo:</label>
       <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
@@ -19,10 +21,32 @@
       
       <label for="telefono">Teléfono:</label>
       <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+
+      <!-- Nuevo campo para gustos -->
+      <label for="gusto">Gustos:</label>
+      <div id="gusto-container">
+        <input type="text" id="gusto" name="gusto" placeholder="Ingrese un gusto">
+        <button type="button" id="agregar-gusto">Agregar</button>
+      </div>
       
       <button type="submit">Enviar</button>
     </form>
+
+    <!-- Tabla para mostrar los gustos -->
+    <table id="tabla-gustos">
+      <thead>
+        <tr>
+          <th>Gustos</th>
+          <th>Porcentaje</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se agregarán las filas de la tabla dinámicamente -->
+      </tbody>
+    </table>
   </div>
   <script src="script.js"></script>
 </body>
 </html>
+
