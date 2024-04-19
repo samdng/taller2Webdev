@@ -117,21 +117,22 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Manejador de evento para aceptar los cambios
     document.getElementById('aceptar-cambios').addEventListener('click', function() {
-      // Construir la URL de destino con los datos del formulario y de la fila en edición
-      var nombre = encodeURIComponent(document.getElementById('nombre').value);
-      var email = encodeURIComponent(document.getElementById('email').value);
-      var telefono = encodeURIComponent(document.getElementById('telefono').value);
-      var gusto = encodeURIComponent(gustos[filaEnEdicion].nombre);
-      var porcentaje = encodeURIComponent(gustos[filaEnEdicion].porcentaje);
-  
-      var urlDestino = `/resultado.html?nombre=${nombre}&email=${email}&telefono=${telefono}&gusto=${gusto}&porc=${porcentaje}`;
-  
-      // Redirigir al usuario a la URL de destino
-      window.location.href = urlDestino;
-  
-      // Ocultar la confirmación después de redirigir
-      ocultarConfirmacion();
-    });
+        // Construir la URL de destino con los datos del formulario y de la fila en edición
+        var nombre = encodeURIComponent(document.getElementById('nombre').value);
+        var email = encodeURIComponent(document.getElementById('email').value);
+        var telefono = encodeURIComponent(document.getElementById('telefono').value);
+        var gusto = encodeURIComponent(gustos[filaEnEdicion].nombre);
+        var porcentaje = encodeURIComponent(gustos[filaEnEdicion].porcentaje);
+
+        var urlDestino = `/resultado.html?nombre=${nombre}&email=${email}&telefono=${telefono}&gusto=${gusto}&porcentaje=${porcentaje}`;
+
+        // Redirigir al usuario a la URL de destino
+        window.location.href = urlDestino;
+
+        // Ocultar la confirmación después de redirigir
+        ocultarConfirmacion();
+});
+
   
     // Función para cancelar los cambios
     function cancelarCambios() {

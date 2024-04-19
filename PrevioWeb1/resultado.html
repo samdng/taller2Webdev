@@ -27,17 +27,20 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Obtener la URL actual
+      var url = window.location.href;
+      
       // Obtener los parámetros de la URL
-      var parametros = new URLSearchParams(window.location.search);
+      var urlParams = new URLSearchParams(url);
 
       // Obtener los valores de los parámetros
-      var nombre = parametros.get('nombre');
-      var email = parametros.get('email');
-      var telefono = parametros.get('telefono');
-      var gusto = parametros.get('gusto');
-      var porcentaje = parametros.get('porc');
+      var nombre = urlParams.get('nombre');
+      var email = urlParams.get('email');
+      var telefono = urlParams.get('telefono');
+      var gusto = urlParams.get('gusto');
+      var porcentaje = urlParams.get('porc');
 
-      // Mostrar los valores en el formulario
+      // Mostrar los valores en los campos del formulario
       document.getElementById('nombre').value = nombre || '';
       document.getElementById('email').value = email || '';
       document.getElementById('telefono').value = telefono || '';
@@ -47,3 +50,4 @@
   </script>
 </body>
 </html>
+
