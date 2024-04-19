@@ -26,27 +26,27 @@
   </form>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Obtener la URL actual
-      var url = window.location.href;
-      
-      // Obtener los parámetros de la URL
-      var urlParams = new URLSearchParams(url);
+  document.addEventListener('DOMContentLoaded', function() {
+    // Obtener la URL actual
+    var url = window.location.href;
+    
+    // Obtener los parámetros de la URL
+    var urlParams = new URLSearchParams(url);
 
-      // Obtener los valores de los parámetros
-      var nombre = urlParams.get('nombre');
-      var email = urlParams.get('email');
-      var telefono = urlParams.get('telefono');
-      var gusto = urlParams.get('gusto');
-      var porcentaje = urlParams.get('porc');
+    // Obtener los valores de los parámetros
+    var nombre = urlParams.get('nombre') || '';
+    var email = urlParams.get('email') || '';
+    var telefono = urlParams.get('telefono') || '';
+    var gusto = urlParams.get('gusto') || '';
+    var porcentaje = urlParams.get('porcentaje') || '';
 
-      // Mostrar los valores en los campos del formulario
-      document.getElementById('nombre').value = nombre || '';
-      document.getElementById('email').value = email || '';
-      document.getElementById('telefono').value = telefono || '';
-      document.getElementById('gusto').value = gusto || '';
-      document.getElementById('porcentaje').value = porcentaje || '';
-    });
+    // Mostrar los valores en los campos del formulario
+    document.getElementById('nombre').value = nombre;
+    document.getElementById('email').value = email;
+    document.getElementById('telefono').value = telefono;
+    document.getElementById('gusto').value = gusto;
+    document.getElementById('porcentaje').value = porcentaje;
+  });
   </script>
 </body>
 </html>

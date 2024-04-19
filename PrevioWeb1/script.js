@@ -117,13 +117,23 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Manejador de evento para aceptar los cambios
     document.getElementById('aceptar-cambios').addEventListener('click', function() {
-        // Construir la URL de destino con los datos del formulario y de la fila en edición
+        // Obtener los valores de los campos del formulario
         var nombre = encodeURIComponent(document.getElementById('nombre').value);
         var email = encodeURIComponent(document.getElementById('email').value);
         var telefono = encodeURIComponent(document.getElementById('telefono').value);
+
+        // Verificar si hay una fila en edición
+        if (filaEnEdicion !== null) {
+        // Obtener los valores del gusto y porcentaje de la fila en edición
         var gusto = encodeURIComponent(gustos[filaEnEdicion].nombre);
         var porcentaje = encodeURIComponent(gustos[filaEnEdicion].porcentaje);
+        } else {
+        // Si no hay fila en edición, establecer los valores como vacíos
+        var gusto = '';
+        var porcentaje = '';
+        }
 
+        // Construir la URL de destino con los datos del formulario y de la fila en edición
         var urlDestino = `/resultado.html?nombre=${nombre}&email=${email}&telefono=${telefono}&gusto=${gusto}&porcentaje=${porcentaje}`;
 
         // Redirigir al usuario a la URL de destino
@@ -131,7 +141,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Ocultar la confirmación después de redirigir
         ocultarConfirmacion();
-});
+    });
+
+    // Evitar el envío del formulario por defecto
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    });
+
 
   
     // Función para cancelar los cambios
