@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Arreglo para almacenar los gustos ingresados
     var gustos = [];
+    // Variable para almacenar el índice de la fila en edición
+    var filaEnEdicion = null;
   
     // Función para agregar un gusto
     function agregarGusto(gusto) {
@@ -25,6 +27,59 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   
+    // Función para activar la edición
+    function activarEdicion(index) {
+      var gustoSpan = document.querySelector(`.gusto[data-index="${index}"]`);
+      var gustoInput = document.querySelector(`.gusto-input[data-index="${index}"]`);
+      var porcentajeSpan = document.querySelector(`.porcentaje[data-index="${index}"]`);
+      var porcentajeInput = document.querySelector(`.porcentaje-input[data-index="${index}"]`);
+  
+      if (gustoSpan && gustoInput && porcentajeSpan && porcentajeInput) {
+        gustoSpan.style.display = 'none';
+        gustoInput.style.display = 'inline';
+        gustoInput.value = gustoSpan.textContent;
+  
+        porcentajeSpan.style.display = 'none';
+        porcentajeInput.style.display = 'inline';
+        porcentajeInput.value = porcentajeSpan.textContent;
+      }
+    }
+  
+    // Función para desactivar la edición
+    function desactivarEdicion(index) {
+      var gustoSpan = document.querySelector(`.gusto[data-index="${index}"]`);
+      var gustoInput = document.querySelector(`.gusto-input[data-index="${index}"]`);
+      var porcentajeSpan = document.querySelector(`.porcentaje[data-index="${index}"]`);
+      var porcentajeInput = document.querySelector(`.porcentaje-input[data-index="${index}"]`);
+  
+      if (gustoSpan && gustoInput && porcentajeSpan && porcentajeInput) {
+        gustoSpan.style.display = 'inline';
+        gustoInput.style.display = 'none';
+        gustoSpan.textContent = gustoInput.value.trim();
+  
+        porcentajeSpan.style.display = 'inline';
+        porcentajeInput.style.display = 'none';
+        porcentajeSpan.textContent = porcentajeInput.value.trim();
+      }
+    }
+  
+    // Función para mostrar una alerta de error
+    function mostrarAlertaError(mensaje) {
+      alert(mensaje);
+    }
+  
+    // Función para mostrar la confirmación
+    function mostrarConfirmacion() {
+      var confirmacionDiv = document.getElementById('confirmacion');
+      confirmacionDiv.style.display = 'block';
+    }
+  
+    // Función para ocultar la confirmación
+    function ocultarConfirmacion() {
+      var confirmacionDiv = document.getElementById('confirmacion');
+      confirmacionDiv.style.display = 'none';
+    }
+  
     // Manejador de evento para agregar un gusto
     document.getElementById('agregar-gusto').addEventListener('click', function() {
       var inputGusto = document.getElementById('gusto');
@@ -38,109 +93,62 @@ document.addEventListener('DOMContentLoaded', function() {
     // Manejador de evento para editar un gusto directamente en la tabla
     document.getElementById('tabla-gustos').addEventListener('click', function(event) {
       if (event.target.classList.contains('editar-gusto')) {
-        var index = event.target.parentNode.parentNode.rowIndex - 1;
-        var gustoSpan = document.querySelector(`.gusto[data-index="${index}"]`);
-        var gustoInput = document.querySelector(`.gusto-input[data-index="${index}"]`);
-        var porcentajeSpan = document.querySelector(`.porcentaje[data-index="${index}"]`);
-        var porcentajeInput = document.querySelector(`.porcentaje-input[data-index="${index}"]`);
-  
-        if (gustoSpan && gustoInput && porcentajeSpan && porcentajeInput) {
-          gustoSpan.style.display = 'none';
-          gustoInput.style.display = 'inline';
-          gustoInput.value = gustoSpan.textContent;
-  
-          porcentajeSpan.style.display = 'none';
-          porcentajeInput.style.display = 'inline';
-          porcentajeInput.value = porcentajeSpan.textContent;
-  
-          var aceptarButton = document.createElement('button');
-          aceptarButton.textContent = 'Aceptar';
-          aceptarButton.classList.add('aceptar-gusto');
-  
-          var cancelarButton = document.createElement('button');
-          cancelarButton.textContent = 'Cancelar';
-          cancelarButton.classList.add('cancelar-gusto');
-  
-          var buttonCell = event.target.parentNode;
-          buttonCell.appendChild(aceptarButton);
-          buttonCell.appendChild(cancelarButton);
-  
-          event.target.style.display = 'none';
+        // Verificar si ya hay una fila en edición
+        if (filaEnEdicion !== null) {
+          mostrarAlertaError('Solo se puede editar una línea. Recargue la página para poder editar otra.');
+          return;
         }
-      } else if (event.target.classList.contains('aceptar-gusto')) {
+  
+        // Obtener el índice de la fila que se está editando
         var index = event.target.parentNode.parentNode.rowIndex - 1;
-        var gustoSpan = document.querySelector(`.gusto[data-index="${index}"]`);
-        var gustoInput = document.querySelector(`.gusto-input[data-index="${index}"]`);
-        var porcentajeSpan = document.querySelector(`.porcentaje[data-index="${index}"]`);
-        var porcentajeInput = document.querySelector(`.porcentaje-input[data-index="${index}"]`);
+        // Activar la edición en la fila seleccionada
+        activarEdicion(index);
+        // Almacenar el índice de la fila en edición
+        filaEnEdicion = index;
   
-        if (gustoSpan && gustoInput && porcentajeSpan && porcentajeInput) {
-          gustos[index].nombre = gustoInput.value.trim();
-          gustos[index].porcentaje = porcentajeInput.value.trim();
+        // Cambiar el texto de "Editar" a "En edición" y cambiar el estilo
+        event.target.textContent = 'En edición';
+        event.target.style.color = 'gray';
+        event.target.style.textDecoration = 'none';
   
-          gustoSpan.textContent = gustoInput.value.trim();
-          gustoSpan.style.display = 'inline';
-          gustoInput.style.display = 'none';
-  
-          porcentajeSpan.textContent = porcentajeInput.value.trim();
-          porcentajeSpan.style.display = 'inline';
-          porcentajeInput.style.display = 'none';
-  
-          var buttonCell = event.target.parentNode;
-          buttonCell.querySelector('.editar-gusto').style.display = 'inline';
-          buttonCell.removeChild(event.target);
-          buttonCell.removeChild(buttonCell.querySelector('.cancelar-gusto'));
-        }
+        mostrarConfirmacion();
       }
     });
   
-    // Manejador de evento para cancelar la edición
-    document.getElementById('tabla-gustos').addEventListener('click', function(event) {
-      if (event.target.classList.contains('cancelar-gusto')) {
-        var index = event.target.parentNode.parentNode.rowIndex - 1;
-        var gustoSpan = document.querySelector(`.gusto[data-index="${index}"]`);
-        var gustoInput = document.querySelector(`.gusto-input[data-index="${index}"]`);
-        var porcentajeSpan = document.querySelector(`.porcentaje[data-index="${index}"]`);
-        var porcentajeInput = document.querySelector(`.porcentaje-input[data-index="${index}"]`);
+    // Manejador de evento para aceptar los cambios
+    document.getElementById('aceptar-cambios').addEventListener('click', function() {
+      // Construir la URL de destino con los datos del formulario y de la fila en edición
+      var nombre = encodeURIComponent(document.getElementById('nombre').value);
+      var email = encodeURIComponent(document.getElementById('email').value);
+      var telefono = encodeURIComponent(document.getElementById('telefono').value);
+      var gusto = encodeURIComponent(gustos[filaEnEdicion].nombre);
+      var porcentaje = encodeURIComponent(gustos[filaEnEdicion].porcentaje);
   
-        if (gustoSpan && gustoInput && porcentajeSpan && porcentajeInput) {
-          gustoSpan.style.display = 'inline';
-          gustoInput.style.display = 'none';
+      var urlDestino = `/resultado.html?nombre=${nombre}&email=${email}&telefono=${telefono}&gusto=${gusto}&porc=${porcentaje}`;
   
-          porcentajeSpan.style.display = 'inline';
-          porcentajeInput.style.display = 'none';
+      // Redirigir al usuario a la URL de destino
+      window.location.href = urlDestino;
   
-          var buttonCell = event.target.parentNode;
-          buttonCell.querySelector('.editar-gusto').style.display = 'inline';
-          buttonCell.removeChild(event.target.parentNode.lastChild);
-          buttonCell.removeChild(event.target);
-        }
-      }
+      // Ocultar la confirmación después de redirigir
+      ocultarConfirmacion();
     });
   
-    // Manejador de evento para el envío del formulario
+    // Función para cancelar los cambios
+    function cancelarCambios() {
+      // Desactivar la edición en la fila
+      desactivarEdicion(filaEnEdicion);
+      // Reiniciar el índice de la fila en edición
+      filaEnEdicion = null;
+      // Ocultar el mensaje de confirmación
+      ocultarConfirmacion();
+    }
+  
+    // Manejador de evento para cancelar los cambios
+    document.getElementById('cancelar-cambios').addEventListener('click', cancelarCambios);
+  
+    // Evitar el envío del formulario por defecto
     document.getElementById('contact-form').addEventListener('submit', function(event) {
       event.preventDefault();
-  
-      // Obtener los valores de los campos del formulario
-      var nombre = document.getElementById('nombre').value;
-      var email = document.getElementById('email').value;
-      var telefono = document.getElementById('telefono').value;
-  
-      // Aquí podrías realizar alguna acción con los datos, como enviarlos a un servidor
-      console.log('Nombre:', nombre);
-      console.log('Email:', email);
-      console.log('Teléfono:', telefono);
-      console.log('Gustos:', gustos);
-  
-      // Limpiar los campos después de enviar el formulario (opcional)
-      document.getElementById('nombre').value = '';
-      document.getElementById('email').value = '';
-      document.getElementById('telefono').value = '';
-  
-      // Limpiar la lista de gustos
-      gustos = [];
-      mostrarGustos();
     });
   });
   
