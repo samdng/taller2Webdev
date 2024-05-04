@@ -1,10 +1,12 @@
 //validacion de formato de datos
-emailmsg="no es un correo electronico";
-alert(emailmsg);
+//emailmsg="no es un correo electronico";
+//alert(emailmsg);
 //ejemplo copilot
-function validarCampos() {
+
+function validar() {
     //traer las constantes desde el formato del html
     const id_usr = document.getElementById('id_usr').value;
+    const id_pais = document.getElementById('id_pais').value;
     const nombre = document.getElementById('nombre').value;
     const apellido = document.getElementById('apellido').value;
     const direccion = document.getElementById('direccion').value;
@@ -14,8 +16,14 @@ function validarCampos() {
     const telefono = document.getElementById('telefono').value;
   
     // Validar id_usr
-    if (!Number.isInteger(parseInt(id_usr))) {
+    if (id_usr.length>11 || !Number.isInteger(parseInt(id_usr))) {
       alert("Por favor, introduce un ID de usuario válido.");
+      return false;
+    }
+
+    // Validar id_pais
+    if (id_pais.length>3) {
+      alert("Por favor, introduce un ID de pais válido.");
       return false;
     }
   
