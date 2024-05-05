@@ -40,7 +40,7 @@
       </div><br>
 
       <div class="form-floating">
-        <input type="number" class="form-control" id="apellido" placeholder="Apellidos" required>
+        <input type="text" class="form-control" id="apellido" placeholder="Apellidos" required>
         <label for="apellido">Apellidos</label>
       </div><br>
 
@@ -61,6 +61,10 @@
         <div class="form-floating">
           <input type="password" class="form-control" id="ccpaswd" placeholder="Contraseña" required>
           <label for="ccpaswd">Contraseña</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="confirmar_paswd" placeholder="Confirmar contraseña" required>
+          <label for="confirmar_paswd">Confirmar contraseña</label>
         </div>      
       </div><br>
 
@@ -84,10 +88,30 @@
           </div>
         </div>
       </div><br>
-     
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="registroGustos" id="registroGustosSi" value="si">
+        <label class="form-check-label" for="registroGustosSi">
+          Sí, quiero registrar mis gustos
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="registroGustos" id="registroGustosNo" value="no" checked>
+        <label class="form-check-label" for="registroGustosNo">
+          No, no quiero registrar mis gustos
+        </label>
+      </div>
+      
+      <div id="seccionGustos" style="display: none;">
+        <input type="text" id="colorFavorito" placeholder="Color favorito del carro">
+        <input type="text" id="marcaFavorita" placeholder="Marca de carro favorita">
+        <input type="text" id="estiloFavorito" placeholder="Estilo de carro favorito">
+        <input type="range" id="rangoPrecio" min="0" max="100000" value="50000">
+      </div>
+
     </form>  
     <div class="col text-center">
-      <button type="button" class="btn btn-outline-primary btn-lg" onclick="validar()">Iniciar sesión</button>
+      <button type="submit" class="btn btn-outline-primary btn-lg" onclick="validar()">Iniciar sesión</button>
     </div>    
   </div>
 
