@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario</title>
   <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multirange/2.1.4/css/bootstrap-multirange.min.css" rel="stylesheet">
+
   <style>
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
@@ -100,13 +102,23 @@
         <label class="form-check-label" for="registroGustosNo">
           No, no quiero registrar mis gustos
         </label>
-      </div>
+      </div><br>
       
       <div id="seccionGustos" style="display: none;">
-        <input type="text" id="colorFavorito" placeholder="Color favorito del carro">
-        <input type="text" id="marcaFavorita" placeholder="Marca de carro favorita">
-        <input type="text" id="estiloFavorito" placeholder="Estilo de carro favorito">
-        <input type="range" id="rangoPrecio" min="0" max="100000" value="50000">
+        <div class="form-floating">
+          <input type="text" class="form-control" placeholder="Color favorito del carro" id="colorFavorito"></input>
+          <label for="colorFavorito">Color Favorito</label>
+        </div><br>
+        <div class="form-floating">
+          <input type="text" class="form-control" placeholder="Color favorito del carro" id="marcaFavorita"></input>
+          <label for="marcaFavorita">Marca Favorita</label>
+        </div><br>
+        <div class="form-floating">
+          <input type="text" class="form-control" placeholder="Color favorito del carro" id="estiloFavorito"></input>
+          <label for="estiloFavorito">Estilo Favorito</label>
+        </div><br>
+        
+        <input type="range" class="form-range" id="rangoPrecio" min="0" max="100000" value="50000">
       </div>
 
     </form>  
