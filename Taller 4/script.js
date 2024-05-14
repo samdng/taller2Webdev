@@ -1,9 +1,6 @@
 //validacion de formato de datos
-//
-//ejemplo copilot
 
 function validar() {
-    //traer las constantes desde el formato del html
     const id_usr = document.getElementById('id_usr').value;
     const id_pais = document.getElementById('id_pais').value;
     const nombre = document.getElementById('nombre').value;
