@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
 </head>
@@ -10,28 +11,27 @@
     <table>
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Author</th>
+                <th>Libro</th>
+                <th>Autor</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>Libro 1</td>
-                <td>Autor 1</td> 
+                <td>Libro 2</td> 
             </tr>
-
-            <!-- Más filas pueden agregarse aquí -->
-
+            <tr>
+                <td>Autor 1</td>
+                <td>Autor 2</td> 
+            </tr> 
         </tbody>
-
-        <!-- El pie de tabla puede agregarse aquí -->
-
     </table>
-
-<!-- Contenido adicional puede agregarse aquí -->
-
+{% if autores %}
+    <ul>
+        {%for autor in autores %}
+            <li><b>Nombre:</b>{{autor.first_name}} {{autor.last_name}} <b>País:</b>{{autor.country}}
+        {% endfor %}
+    </ul>
+{% endif %}
 </body>
-
-<!-- Scripts adicionales pueden agregarse aquí -->
-
 </html>
