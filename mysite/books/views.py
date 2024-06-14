@@ -1,18 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from .models import Autor
 
-from .models import Author
 # Create your views here.
 def index(request):
-    autores = Author.objects.all()
-    template = loader.get_template("books/index.html")
+    autores = Autor.objects.all()
+    template = loader.get_template('books/index.html')
     context = {
-        "autores":autores,
+        'autores':autores,
     }
-    return HttpResponse(template.render(context,request))
+    return HttpResponse(template.render(context, request))
 
 def home(request):
-    template = loader.get_template("index.html")
+    template = loader.get_template('index.html')
     context = {}
-    return HttpResponse(template.render(context,request))
+    return HttpResponse(template.render(context, request))

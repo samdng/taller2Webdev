@@ -2,20 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
-    {% extends "base/base.html" %}
-    {% block extrahead %}
-    <title>Home</title>
-    {% endblock extrahead %}
-    {% block content %}
-    <div class="container">
-        <h1>Home de la applicacion</h1>
-        <p>Este es el home de la aplicacion</p>
-    </div>
-    {% endblock content %}
 </head>
-</body>
 <body>
+    <h1>Esta es la pagina principal de Books</h1>
+    <table>
+        <thead>
+            <th>Libro</th>
+            <th>Autor</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Libro 1</td>
+                <td>Libro 2</td>
+            </tr>
+            <tr>
+                <td>Autor 1</td>
+                <td>Autor 2</td>
+            </tr>
+        </tbody>
+    </table>
+    {% if autores %}
+        <ul>
+            {% for autor in autores %}
+            <li><b>Nombre:</b>{{autor.first_name}} {{autor.last_name}} <b>Pais:</b>{{autor.country}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
 </html>
