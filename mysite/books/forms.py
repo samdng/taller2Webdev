@@ -18,7 +18,7 @@ class AuthorForm(forms.Mode1Form):
             'country' : 'Pais',
         }
         widgets = {
-            'first_name': forms.TextInput(attrs={'class':'form-control','required':''})
-            'last_name': forms.TextInput(attrs={'class':'form-control','required':''})
-            'country': forms.TextInput(attrs={'class':'form-control','required':''})
+            'first_name': forms.TextInput(attrs={'class':'form-control','required':''}),
+            'last_name': forms.TextInput(attrs={'class':'form-control','required':''}),
+            'country': forms.TextInput(attrs={'class':'form-control','required':''}),
         }
