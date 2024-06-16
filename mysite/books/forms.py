@@ -1,10 +1,9 @@
 from django import forms
+from .models import Autor
 
-from .models import Author
-
-class AuthorForm(forms.Mode1Form):
+class AutorForm(forms.ModelForm):
     class Meta:
-        model = Author
+        model = Autor
 
         fields = [
             'first_name',
