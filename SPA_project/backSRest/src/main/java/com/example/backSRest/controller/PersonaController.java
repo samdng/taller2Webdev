@@ -39,6 +39,11 @@ public class PersonaController {
     throws ResourceNotFoundException {
         Persona persona = personaRepository.findById(PersonaId)
                 .orElseThrow(()-> new ResourceNotFoundException("no se encuentra  la persona con id:"+PersonaId));
-        return null;
+        persona.setId(personaDetail.getId());
+        persona.setNombre(personaDetail.getNombre());
+        persona.setLogin(personaDetail.getLogin());
+        persona.setPass(personaDetail.getPass());
+        final Persona updPersona = personaRepository.save(persona);
+        return ResponseEntity.ok().body(updPersona);
     }
 }
