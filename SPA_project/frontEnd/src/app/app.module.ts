@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { AddComponent } from './persona/add/add.component';
 import { EditComponent } from './persona/edit/edit.component';
 import { ListComponent } from './persona/list/list.component';
+import { ServiceService } from './service/service.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,10 +19,13 @@ import { ListComponent } from './persona/list/list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    ServiceService
   ],
   bootstrap: [AppComponent]
 })
