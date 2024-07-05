@@ -6,7 +6,6 @@ import { Persona } from '../modelo/Persona';
   providedIn: 'root'
 })
 export class ServiceService {
-
   constructor(private http:HttpClient) { }
 
   Url = 'http://localhost:8080/rrhh/persona/persona';
@@ -17,5 +16,13 @@ export class ServiceService {
 
   createPersona(persona:Persona){
     return this.http.post<Persona>(this.Url,persona);
+  }
+
+  getPersonabyId(id:number){
+    return this.http.get<Persona>(this.Url+"/"+id);
+  }
+
+  updatePersona(persona:Persona){
+    return this.http.put<Persona>(this.Url+"/"+persona.id, persona);
   }
 }

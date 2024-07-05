@@ -20,4 +20,8 @@ export class ListComponent implements OnInit{
       })
   }
 
+  Edit(persona:Persona){
+    localStorage.setItem("id", persona.id.toString());
+    this.router.navigate(["edit"]);
+  }
 }

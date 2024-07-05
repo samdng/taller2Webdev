@@ -13,7 +13,7 @@ export class AddComponent implements OnInit{
   constructor(private reouter:Router, private service:ServiceService){}
 
   ngOnInit(): void {
-      
+      this.Guardar;
   }
 
   Guardar(){

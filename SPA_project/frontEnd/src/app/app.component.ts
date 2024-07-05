@@ -11,8 +11,10 @@ export class AppComponent {
   constructor(private router:Router){}
 
   Listar(){
-    this.router.navigate(["Listar"]);
+    this.router.navigate(["list"]);
   }
 
-
+  Crear(){
+    this.router.navigate(["add"]);
+  }
 }

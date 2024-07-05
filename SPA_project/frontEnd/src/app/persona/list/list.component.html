@@ -16,7 +16,9 @@
             <td class="mdc-data-table__cell">{{  persona.nombre }}</td>
             <td class="mdc-data-table__cell">{{  persona.apellido }}</td>
             <td class="mdc-data-table__cell">{{  persona.login }}</td>
-            <td class="mdc-data-table__cell"></td>
+            <td class="mdc-data-table__cell">
+              <button (click)='Edit(persona)'>Editar</button>
+            </td>
           </tr>
         </tbody>
       </table>
