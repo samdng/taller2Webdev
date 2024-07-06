@@ -4,9 +4,9 @@
         <thead>
           <tr class="mdc-data-table__header-row">
             <th class="mdc-data-table__header-cell" role="columnheader" scope="col">ID</th>
-            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Nombre</th>
-            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Apellido</th>
-            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Login</th>
+            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Nombre</th>
+            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Apellido</th>
+            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Login</th>            
             <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comands</th>
           </tr>
         </thead>
@@ -17,7 +17,7 @@
             <td class="mdc-data-table__cell">{{  persona.apellido }}</td>
             <td class="mdc-data-table__cell">{{  persona.login }}</td>
             <td class="mdc-data-table__cell">
-              <button (click)='Edit(persona)'>Editar</button>
+              <button (click)="Edit(persona)">Editar</button>
             </td>
           </tr>
         </tbody>
