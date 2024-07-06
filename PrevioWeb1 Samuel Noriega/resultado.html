@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado</title>
+</head>
+<body>
+  <h1>Resultado</h1>
+  
+  <form>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" readonly><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" readonly><br><br>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" id="telefono" name="telefono" readonly><br><br>
+
+    <label for="gusto">Gusto:</label>
+    <input type="text" id="gusto" name="gusto" readonly><br><br>
+
+    <label for="porcentaje">Porcentaje:</label>
+    <input type="text" id="porcentaje" name="porcentaje" readonly><br><br>
+  </form>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Obtener la URL actual
+    var url = window.location.href;
+    
+    // Obtener los parámetros de la URL
+    var urlParams = new URLSearchParams(url);
+
+    // Obtener los valores de los parámetros
+    var nombre = urlParams.get('nombre') || '';
+    var email = urlParams.get('email') || '';
+    var telefono = urlParams.get('telefono') || '';
+    var gusto = urlParams.get('gusto') || '';
+    var porcentaje = urlParams.get('porcentaje') || '';
+
+    // Mostrar los valores en los campos del formulario
+    document.getElementById('nombre').value = nombre;
+    document.getElementById('email').value = email;
+    document.getElementById('telefono').value = telefono;
+    document.getElementById('gusto').value = gusto;
+    document.getElementById('porcentaje').value = porcentaje;
+  });
+  </script>
+</body>
+</html>
+

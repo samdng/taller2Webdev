@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <p id="form-title"><b>Web</b>Developer</p>
+    <center>
+    <p>formulario de afiliacion</p>
+    </center>
+    <form id="contact-form">
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+      
+      <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+      
+      <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+
+      <input type="text" id="gusto" name="gusto" placeholder="Ingrese un gusto">
+      <button type="button" id="agregar-gusto">Gustos</button>
+      
+
+    </form>
+    
+    <div class="container">
+      <table id="tabla-gustos">
+        <thead>
+          <tr>
+            <th>gusto</th>
+            <th>%</th>
+            <th>edit</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <div id="confirmacion" style="display: none;">
+        <p>Pulse Aceptar para guardar los cambios o cancelar para anularlos</p>
+        <button id="aceptar-cambios">Aceptar</button>
+        <button id="cancelar-cambios">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
