@@ -10,7 +10,7 @@ import { ServiceService } from '../../service/service.service';
 })
 export class AddComponent implements OnInit{
   persona:Persona = new Persona();
-  constructor(private reouter:Router, private service:ServiceService){}
+  constructor(private router:Router, private service:ServiceService){}
 
   ngOnInit(): void {
       this.Guardar;
@@ -20,7 +20,7 @@ export class AddComponent implements OnInit{
     this.service.createPersona(this.persona)
     .subscribe(data=>{
       alert("Persona ha sido creada con exito!!..")
-      this.reouter.navigate(["list"]);
+      this.router.navigate(["list"]);
     })
   }
 }
